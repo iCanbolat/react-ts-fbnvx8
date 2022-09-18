@@ -15,8 +15,12 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import Header from './components/Head';
 import Center from './components/Center';
+import data from './tasks.json';
+import { RootObject } from './types';
 
 export default function App() {
+  let g: RootObject[] = data;
+  console.log(g);
   return (
     <Container>
       <Grid

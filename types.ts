@@ -1,5 +1,5 @@
 declare module namespace {
-  export interface TaskObject {
+  export interface RootObject {
     dayOne: boolean;
     focusArea: string;
     createdAt: Date;
