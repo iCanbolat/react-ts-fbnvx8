@@ -17,10 +17,9 @@ import Header from './components/Head';
 import Center from './components/Center';
 import data from './tasks.json';
 import { RootObject } from './types';
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 
 export default function App() {
-  let g: RootObject[] = data;
-  console.log(g);
   return (
     <Container>
       <Grid
@@ -37,7 +36,23 @@ export default function App() {
               <Header />
 
               {/* Center Part */}
-              <Center />
+              <Center data={data} />
+
+              {/* Bottom Line */}
+              <Grid item md={12} sx={{ mt: 2, textAlign: 'center' }}>
+                <Button
+                  sx={{
+                    textTransform: 'capitalize',
+                    color: 'black',
+                    fontWeight: 500,
+                    fontSize: '12px',
+                    p: 0,
+                  }}
+                  endIcon={<ArrowRightAltIcon />}
+                >
+                  Impact
+                </Button>
+              </Grid>
             </CardContent>
           </Card>
         </Grid>

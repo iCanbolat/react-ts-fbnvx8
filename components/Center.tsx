@@ -1,8 +1,19 @@
 import { Box, Card, Grid, Typography, Button, IconButton } from '@mui/material';
 import * as React from 'react';
+import { FunctionComponent } from 'react';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
+import { RootObject } from './types';
 
-export default function Center() {
+interface IRootObject {
+  data: RootObject;
+}
+
+const Center: FunctionComponent<IRootObject> = (props) => {
+  const { data } = props;
+  const unAssign: Number = data?.filter(
+    (x) => x.riskLikelihood === null && x.riskImpact === null
+  ).length;
+
   return (
     <Grid container sx={{ minHeight: '14em' }}>
       <Grid item md={1}>
@@ -14,7 +25,7 @@ export default function Center() {
             fontWeight: 500,
             fontSize: '12px',
             p: 0,
-            left: '-35px',
+            left: '-30px',
             top: '45%',
           }}
           endIcon={<ArrowRightAltIcon />}
@@ -23,22 +34,22 @@ export default function Center() {
         </Button>
       </Grid>
 
-      <Grid item md={11} sx={{ mt: 1 }}>
+      <Grid item md={11} xs={10} sx={{ mt: 1 }}>
         {/* High */}
         <Grid container spacing={0.5} sx={{ mb: 0.5 }}>
-          <Grid item md={3}>
+          <Grid item md={1.5} xs={1}>
             <Typography
               sx={{
                 fontSize: '12px',
                 textAlign: 'center',
-                marginTop: '19%',
+                marginTop: '41%',
                 color: '#6E6B8C',
               }}
             >
               High
             </Typography>
           </Grid>
-          <Grid item md={2}>
+          <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
                 p: 2,
@@ -61,7 +72,7 @@ export default function Center() {
               </Typography>
             </Box>
           </Grid>
-          <Grid item md={2}>
+          <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
                 p: 2,
@@ -84,7 +95,7 @@ export default function Center() {
               </Typography>
             </Box>
           </Grid>
-          <Grid item md={2}>
+          <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
                 p: 2,
@@ -107,7 +118,7 @@ export default function Center() {
               </Typography>
             </Box>
           </Grid>
-          <Grid item md={2}>
+          <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
                 p: 2,
@@ -134,19 +145,19 @@ export default function Center() {
 
         {/* Medium */}
         <Grid container spacing={0.5} sx={{ mb: 0.5 }}>
-          <Grid item md={3}>
+          <Grid item md={1.5} xs={1}>
             <Typography
               sx={{
                 fontSize: '12px',
                 textAlign: 'center',
-                marginTop: '19%',
+                marginTop: '41%',
                 color: '#6E6B8C',
               }}
             >
               Medium
             </Typography>
           </Grid>
-          <Grid item md={2}>
+          <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
                 p: 2,
@@ -156,7 +167,7 @@ export default function Center() {
               }}
             >
               <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
-                High
+                Medium
               </Typography>
               <Typography
                 sx={{
@@ -169,7 +180,7 @@ export default function Center() {
               </Typography>
             </Box>
           </Grid>
-          <Grid item md={2}>
+          <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
                 p: 2,
@@ -179,7 +190,7 @@ export default function Center() {
               }}
             >
               <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
-                High
+                Medium
               </Typography>
               <Typography
                 sx={{
@@ -192,7 +203,7 @@ export default function Center() {
               </Typography>
             </Box>
           </Grid>
-          <Grid item md={2}>
+          <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
                 p: 2,
@@ -202,7 +213,7 @@ export default function Center() {
               }}
             >
               <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
-                High
+                Medium
               </Typography>
               <Typography
                 sx={{
@@ -215,7 +226,7 @@ export default function Center() {
               </Typography>
             </Box>
           </Grid>
-          <Grid item md={2}>
+          <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
                 p: 2,
@@ -242,19 +253,19 @@ export default function Center() {
 
         {/* Low */}
         <Grid container spacing={0.5} sx={{ mb: 0.5 }}>
-          <Grid item md={3}>
+          <Grid item md={1.5} xs={1}>
             <Typography
               sx={{
                 fontSize: '12px',
                 textAlign: 'center',
-                marginTop: '19%',
+                marginTop: '41%',
                 color: '#6E6B8C',
               }}
             >
-              Medium
+              Low
             </Typography>
           </Grid>
-          <Grid item md={2}>
+          <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
                 p: 2,
@@ -264,7 +275,7 @@ export default function Center() {
               }}
             >
               <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
-                High
+                Low
               </Typography>
               <Typography
                 sx={{
@@ -277,7 +288,7 @@ export default function Center() {
               </Typography>
             </Box>
           </Grid>
-          <Grid item md={2}>
+          <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
                 p: 2,
@@ -287,7 +298,7 @@ export default function Center() {
               }}
             >
               <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
-                High
+                Low
               </Typography>
               <Typography
                 sx={{
@@ -300,7 +311,7 @@ export default function Center() {
               </Typography>
             </Box>
           </Grid>
-          <Grid item md={2}>
+          <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
                 p: 2,
@@ -310,7 +321,7 @@ export default function Center() {
               }}
             >
               <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
-                High
+                Medium
               </Typography>
               <Typography
                 sx={{
@@ -323,7 +334,7 @@ export default function Center() {
               </Typography>
             </Box>
           </Grid>
-          <Grid item md={2}>
+          <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
                 p: 2,
@@ -350,19 +361,19 @@ export default function Center() {
 
         {/* Unassigned */}
         <Grid container spacing={0.5} sx={{ mb: 0.5 }}>
-          <Grid item md={3}>
+          <Grid item md={1.5} xs={1}>
             <Typography
               sx={{
                 fontSize: '12px',
                 textAlign: 'center',
-                marginTop: '19%',
+                marginTop: '41%',
                 color: '#6E6B8C',
               }}
             >
               Unassigned
             </Typography>
           </Grid>
-          <Grid item md={2}>
+          <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
                 p: 2,
@@ -372,7 +383,7 @@ export default function Center() {
               }}
             >
               <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
-                High
+                Unassigned
               </Typography>
               <Typography
                 sx={{
@@ -381,11 +392,11 @@ export default function Center() {
                   color: '#6E6B8C',
                 }}
               >
-                9
+                {unAssign}
               </Typography>
             </Box>
           </Grid>
-          <Grid item md={2}>
+          <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
                 p: 2,
@@ -395,7 +406,7 @@ export default function Center() {
               }}
             >
               <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
-                High
+                Low
               </Typography>
               <Typography
                 sx={{
@@ -408,7 +419,7 @@ export default function Center() {
               </Typography>
             </Box>
           </Grid>
-          <Grid item md={2}>
+          <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
                 p: 2,
@@ -418,7 +429,7 @@ export default function Center() {
               }}
             >
               <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
-                High
+                Medium
               </Typography>
               <Typography
                 sx={{
@@ -431,7 +442,7 @@ export default function Center() {
               </Typography>
             </Box>
           </Grid>
-          <Grid item md={2}>
+          <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
                 p: 2,
@@ -455,7 +466,66 @@ export default function Center() {
             </Box>
           </Grid>
         </Grid>
+
+        {/* Bottom */}
+        <Grid container spacing={0.5} sx={{ my: 0.5 }}>
+          <Grid item md={1.5} xs={1}>
+            <Typography
+              sx={{
+                fontSize: '12px',
+                textAlign: 'center',
+                marginTop: '19%',
+                color: '#6E6B8C',
+              }}
+            ></Typography>
+          </Grid>
+          <Grid item md={2.625} xs={2.75}>
+            <Box
+              sx={{
+                textAlign: 'center',
+              }}
+            >
+              <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
+                Unassigned
+              </Typography>
+            </Box>
+          </Grid>
+          <Grid item md={2.625} xs={2.75}>
+            <Box
+              sx={{
+                textAlign: 'center',
+              }}
+            >
+              <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
+                Low
+              </Typography>
+            </Box>
+          </Grid>
+          <Grid item md={2.625} xs={2.75}>
+            <Box
+              sx={{
+                textAlign: 'center',
+              }}
+            >
+              <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
+                Medium
+              </Typography>
+            </Box>
+          </Grid>
+          <Grid item md={2.625} xs={2.75}>
+            <Box
+              sx={{
+                textAlign: 'center',
+              }}
+            >
+              <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
+                High
+              </Typography>
+            </Box>
+          </Grid>
+        </Grid>
       </Grid>
     </Grid>
   );
-}
+};
+export default Center;
