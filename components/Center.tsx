@@ -10,13 +10,73 @@ interface IRootObject {
 
 const Center: FunctionComponent<IRootObject> = (props) => {
   const { data } = props;
-  const unAssign: Number = data?.filter(
-    (x) => x.riskLikelihood === null && x.riskImpact === null
-  ).length;
+  const dataByCols = {
+    //Unassigned Task Column
+    unassigned: {
+      unAssign: data?.filter(
+        (x) => x.riskLikelihood === null && x.riskImpact === null
+      ).length,
+      low: data?.filter(
+        (x) => x.riskImpact === null && x.riskLikelihood === 'low'
+      ).length,
+      medium: data?.filter(
+        (x) => x.riskImpact === null && x.riskLikelihood === 'medium'
+      ).length,
+      high: data?.filter(
+        (x) => x.riskImpact === null && x.riskLikelihood === 'high'
+      ).length,
+    },
+    //Low Task Col
+    low: {
+      unAssign: data?.filter(
+        (x) => x.riskImpact === 'low' && x.riskLikelihood === null
+      ).length,
+      low: data?.filter(
+        (x) => x.riskImpact === 'low' && x.riskLikelihood === 'low'
+      ).length,
+      medium: data?.filter(
+        (x) => x.riskImpact === 'low' && x.riskLikelihood === 'medium'
+      ).length,
+      high: data?.filter(
+        (x) => x.riskImpact === 'low' && x.riskLikelihood === 'high'
+      ).length,
+    },
+    //Medium Task Col
+    medium: {
+      unAssign: data?.filter(
+        (x) => x.riskImpact === 'medium' && x.riskLikelihood === null
+      ).length,
+      low: data?.filter(
+        (x) => x.riskImpact === 'medium' && x.riskLikelihood === 'low'
+      ).length,
+      medium: data?.filter(
+        (x) => x.riskImpact === 'medium' && x.riskLikelihood === 'medium'
+      ).length,
+      high: data?.filter(
+        (x) => x.riskImpact === 'medium' && x.riskLikelihood === 'high'
+      ).length,
+    },
+    //High Task Col
+    high: {
+      unAssign: data?.filter(
+        (x) => x.riskImpact === 'high' && x.riskLikelihood === null
+      ).length,
+      low: data?.filter(
+        (x) => x.riskImpact === 'high' && x.riskLikelihood === 'low'
+      ).length,
+      medium: data?.filter(
+        (x) => x.riskImpact === 'high' && x.riskLikelihood === 'medium'
+      ).length,
+      high: data?.filter(
+        (x) => x.riskImpact === 'high' && x.riskLikelihood === 'high'
+      ).length,
+    },
+  };
 
+  console.log(dataByCols.unassigned.low);
   return (
     <Grid container sx={{ minHeight: '14em' }}>
-      <Grid item md={1}>
+      <Grid item md={1} xs={1}>
         <Button
           sx={{
             transform: 'rotate(-90deg)',
@@ -34,7 +94,7 @@ const Center: FunctionComponent<IRootObject> = (props) => {
         </Button>
       </Grid>
 
-      <Grid item md={11} xs={10} sx={{ mt: 1 }}>
+      <Grid item md={11} xs={11} sx={{ mt: 1 }}>
         {/* High */}
         <Grid container spacing={0.5} sx={{ mb: 0.5 }}>
           <Grid item md={1.5} xs={1}>
@@ -52,15 +112,12 @@ const Center: FunctionComponent<IRootObject> = (props) => {
           <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
-                p: 2,
+                p: 3.1,
                 border: '1px solid white',
                 backgroundColor: '#FFBDAD',
                 textAlign: 'center',
               }}
             >
-              <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
-                High
-              </Typography>
               <Typography
                 sx={{
                   fontSize: '15px',
@@ -68,22 +125,19 @@ const Center: FunctionComponent<IRootObject> = (props) => {
                   color: '#6E6B8C',
                 }}
               >
-                9
+                {dataByCols.unassigned.high}
               </Typography>
             </Box>
           </Grid>
           <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
-                p: 2,
+                p: 3.1,
                 border: '1px solid white',
                 backgroundColor: '#FFBDAD',
                 textAlign: 'center',
               }}
             >
-              <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
-                High
-              </Typography>
               <Typography
                 sx={{
                   fontSize: '15px',
@@ -91,22 +145,19 @@ const Center: FunctionComponent<IRootObject> = (props) => {
                   color: '#6E6B8C',
                 }}
               >
-                9
+                {dataByCols.low.high}
               </Typography>
             </Box>
           </Grid>
           <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
-                p: 2,
+                p: 3.1,
                 border: '1px solid white',
                 backgroundColor: '#FFBDAD',
                 textAlign: 'center',
               }}
             >
-              <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
-                High
-              </Typography>
               <Typography
                 sx={{
                   fontSize: '15px',
@@ -114,22 +165,19 @@ const Center: FunctionComponent<IRootObject> = (props) => {
                   color: '#6E6B8C',
                 }}
               >
-                9
+                {dataByCols.medium.high}
               </Typography>
             </Box>
           </Grid>
           <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
-                p: 2,
+                p: 3.1,
                 border: '1px solid white',
                 backgroundColor: '#FFBDAD',
                 textAlign: 'center',
               }}
             >
-              <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
-                High
-              </Typography>
               <Typography
                 sx={{
                   fontSize: '15px',
@@ -137,7 +185,7 @@ const Center: FunctionComponent<IRootObject> = (props) => {
                   color: '#6E6B8C',
                 }}
               >
-                9
+                {dataByCols.high.high}
               </Typography>
             </Box>
           </Grid>
@@ -152,6 +200,7 @@ const Center: FunctionComponent<IRootObject> = (props) => {
                 textAlign: 'center',
                 marginTop: '41%',
                 color: '#6E6B8C',
+                wordBreak: 'break-all',
               }}
             >
               Medium
@@ -160,15 +209,12 @@ const Center: FunctionComponent<IRootObject> = (props) => {
           <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
-                p: 2,
+                p: 3.1,
                 border: '1px solid white',
                 backgroundColor: '#FFF0B3',
                 textAlign: 'center',
               }}
             >
-              <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
-                Medium
-              </Typography>
               <Typography
                 sx={{
                   fontSize: '15px',
@@ -176,22 +222,19 @@ const Center: FunctionComponent<IRootObject> = (props) => {
                   color: '#6E6B8C',
                 }}
               >
-                9
+                {dataByCols.unassigned.medium}
               </Typography>
             </Box>
           </Grid>
           <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
-                p: 2,
+                p: 3.1,
                 border: '1px solid white',
                 backgroundColor: '#FFF0B3',
                 textAlign: 'center',
               }}
             >
-              <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
-                Medium
-              </Typography>
               <Typography
                 sx={{
                   fontSize: '15px',
@@ -199,22 +242,19 @@ const Center: FunctionComponent<IRootObject> = (props) => {
                   color: '#6E6B8C',
                 }}
               >
-                9
+                {dataByCols.low.medium}
               </Typography>
             </Box>
           </Grid>
           <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
-                p: 2,
+                p: 3.1,
                 border: '1px solid white',
                 backgroundColor: '#FFF0B3',
                 textAlign: 'center',
               }}
             >
-              <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
-                Medium
-              </Typography>
               <Typography
                 sx={{
                   fontSize: '15px',
@@ -222,22 +262,19 @@ const Center: FunctionComponent<IRootObject> = (props) => {
                   color: '#6E6B8C',
                 }}
               >
-                9
+                {dataByCols.medium.medium}
               </Typography>
             </Box>
           </Grid>
           <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
-                p: 2,
+                p: 3.1,
                 border: '1px solid white',
                 backgroundColor: '#FFBDAD',
                 textAlign: 'center',
               }}
             >
-              <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
-                High
-              </Typography>
               <Typography
                 sx={{
                   fontSize: '15px',
@@ -245,7 +282,7 @@ const Center: FunctionComponent<IRootObject> = (props) => {
                   color: '#6E6B8C',
                 }}
               >
-                9
+                {dataByCols.medium.high}
               </Typography>
             </Box>
           </Grid>
@@ -268,15 +305,12 @@ const Center: FunctionComponent<IRootObject> = (props) => {
           <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
-                p: 2,
+                p: 3.1,
                 border: '1px solid white',
                 backgroundColor: '#ABF5D1',
                 textAlign: 'center',
               }}
             >
-              <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
-                Low
-              </Typography>
               <Typography
                 sx={{
                   fontSize: '15px',
@@ -284,22 +318,19 @@ const Center: FunctionComponent<IRootObject> = (props) => {
                   color: '#6E6B8C',
                 }}
               >
-                9
+                {dataByCols.unassigned.low}
               </Typography>
             </Box>
           </Grid>
           <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
-                p: 2,
+                p: 3.1,
                 border: '1px solid white',
                 backgroundColor: '#ABF5D1',
                 textAlign: 'center',
               }}
             >
-              <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
-                Low
-              </Typography>
               <Typography
                 sx={{
                   fontSize: '15px',
@@ -307,22 +338,19 @@ const Center: FunctionComponent<IRootObject> = (props) => {
                   color: '#6E6B8C',
                 }}
               >
-                9
+                {dataByCols.low.low}
               </Typography>
             </Box>
           </Grid>
           <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
-                p: 2,
+                p: 3.1,
                 border: '1px solid white',
                 backgroundColor: '#FFF0B3',
                 textAlign: 'center',
               }}
             >
-              <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
-                Medium
-              </Typography>
               <Typography
                 sx={{
                   fontSize: '15px',
@@ -330,22 +358,19 @@ const Center: FunctionComponent<IRootObject> = (props) => {
                   color: '#6E6B8C',
                 }}
               >
-                9
+                {dataByCols.medium.low}
               </Typography>
             </Box>
           </Grid>
           <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
-                p: 2,
+                p: 3.1,
                 border: '1px solid white',
                 backgroundColor: '#FFBDAD',
                 textAlign: 'center',
               }}
             >
-              <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
-                High
-              </Typography>
               <Typography
                 sx={{
                   fontSize: '15px',
@@ -353,7 +378,7 @@ const Center: FunctionComponent<IRootObject> = (props) => {
                   color: '#6E6B8C',
                 }}
               >
-                9
+                {dataByCols.high.low}
               </Typography>
             </Box>
           </Grid>
@@ -368,6 +393,7 @@ const Center: FunctionComponent<IRootObject> = (props) => {
                 textAlign: 'center',
                 marginTop: '41%',
                 color: '#6E6B8C',
+                wordBreak: 'break-all',
               }}
             >
               Unassigned
@@ -376,15 +402,12 @@ const Center: FunctionComponent<IRootObject> = (props) => {
           <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
-                p: 2,
+                p: 3.1,
                 border: '1px solid white',
                 backgroundColor: '#E0DFE6',
                 textAlign: 'center',
               }}
             >
-              <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
-                Unassigned
-              </Typography>
               <Typography
                 sx={{
                   fontSize: '15px',
@@ -392,22 +415,19 @@ const Center: FunctionComponent<IRootObject> = (props) => {
                   color: '#6E6B8C',
                 }}
               >
-                {unAssign}
+                {dataByCols.unassigned.unAssign}
               </Typography>
             </Box>
           </Grid>
           <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
-                p: 2,
+                p: 3.1,
                 border: '1px solid white',
                 backgroundColor: '#ABF5D1',
                 textAlign: 'center',
               }}
             >
-              <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
-                Low
-              </Typography>
               <Typography
                 sx={{
                   fontSize: '15px',
@@ -415,22 +435,19 @@ const Center: FunctionComponent<IRootObject> = (props) => {
                   color: '#6E6B8C',
                 }}
               >
-                9
+                {dataByCols.low.unAssign}
               </Typography>
             </Box>
           </Grid>
           <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
-                p: 2,
+                p: 3.1,
                 border: '1px solid white',
                 backgroundColor: '#FFF0B3',
                 textAlign: 'center',
               }}
             >
-              <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
-                Medium
-              </Typography>
               <Typography
                 sx={{
                   fontSize: '15px',
@@ -438,22 +455,19 @@ const Center: FunctionComponent<IRootObject> = (props) => {
                   color: '#6E6B8C',
                 }}
               >
-                9
+                {dataByCols.medium.unAssign}
               </Typography>
             </Box>
           </Grid>
           <Grid item md={2.625} xs={2.75}>
             <Box
               sx={{
-                p: 2,
+                p: 3.1,
                 border: '1px solid white',
                 backgroundColor: '#FFBDAD',
                 textAlign: 'center',
               }}
             >
-              <Typography sx={{ fontSize: '12px', color: '#6E6B8C' }}>
-                High
-              </Typography>
               <Typography
                 sx={{
                   fontSize: '15px',
@@ -461,7 +475,7 @@ const Center: FunctionComponent<IRootObject> = (props) => {
                   color: '#6E6B8C',
                 }}
               >
-                9
+                {dataByCols.high.unAssign}
               </Typography>
             </Box>
           </Grid>

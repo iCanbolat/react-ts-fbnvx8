@@ -29,8 +29,11 @@ export default function App() {
         alignItems="center"
         sx={{ height: '100vh' }}
       >
-        <Grid item>
-          <Card sx={{ minHeight: '423px', minWidth: '630px' }}>
+        <Grid
+          item
+          sx={{ minHeight: '423px', minWidth: { xs: '350px', sm: '630px' } }}
+        >
+          <Card>
             <CardContent>
               {/* Head Part */}
               <Header />
