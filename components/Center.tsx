@@ -8,9 +8,20 @@ interface IRootObject {
   data: RootObject;
 }
 
+interface Data {
+  unAssign: Number;
+  low: Number;
+  medium: Number;
+  high: Number;
+}
+
+interface DataMap {
+  [key: string]: Data;
+}
+
 const Center: FunctionComponent<IRootObject> = (props) => {
   const { data } = props;
-  const dataByCols = {
+  const dataByCols: DataMap = {
     //Unassigned Task Column
     unassigned: {
       unAssign: data?.filter(
